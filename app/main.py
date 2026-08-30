@@ -10,8 +10,11 @@ from app.data_loader import load_countries
 from app.llm.client import analyze_country
 from app.risk.schema import AnalyzeRequest, AnalyzeResponse, ApiConfigStatus, ApiKeyRequest
 from app.risk.scoring import build_profile
+from app.rag.router import router as rag_router
 
 app = FastAPI(title="Georisk 海外项目国别风险分析", version="0.1.0")
+
+app.include_router(rag_router)
 
 
 @app.get("/api/health")
