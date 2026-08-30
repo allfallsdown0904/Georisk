@@ -33,13 +33,19 @@
       <div id="profile-result" class="result"></div>
     </section>
     <section class="panel hidden" id="panel-alert">
-      <div class="placeholder">事件预警：骨架阶段占位，后续接入风险事件监测。</div>
+      <div class="controls">
+        <label for="question-input">咨询问题</label>
+        <input id="question-input" type="text" value="当前国别风险如何？请给出针对性建议" />
+        <button id="btn-analyze">开始智能分析</button>
+      </div>
+      <div id="rag-mode" class="mode-note"></div>
+      <div id="alert-result" class="result"></div>
     </section>
     <section class="panel hidden" id="panel-scenario">
-      <div class="placeholder">情景推演：骨架阶段占位，后续实现乐观/基准/压力三情景。</div>
+      <div id="scenario-result" class="result"></div>
     </section>
     <section class="panel hidden" id="panel-advice">
-      <div class="placeholder">建议清单：骨架阶段占位，后续输出带证据溯源的建议。</div>
+      <div id="advice-result" class="result"></div>
     </section>
   </main>
 
