@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>海外项目国别风险分析</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>海外项目国别风险分析</h1>
+    <span class="status" id="health-status">连接中…</span>
+  </header>
+  <nav class="tabs">
+    <button class="tab active" data-tab="profile">风险画像</button>
+    <button class="tab" data-tab="alert">事件预警</button>
+    <button class="tab" data-tab="scenario">情景推演</button>
+    <button class="tab" data-tab="advice">建议清单</button>
+  </nav>
+  <main>
+    <section class="panel" id="panel-profile">
+      <div class="controls">
+        <label for="country-select">选择国家</label>
+        <select id="country-select"><option value="">加载中…</option></select>
+        <label for="project-type">项目类型</label>
+        <input id="project-type" type="text" value="EPC工程总承包" />
+        <button id="btn-profile">生成风险画像</button>
+      </div>
+      <div id="profile-result" class="result"></div>
+    </section>
+    <section class="panel hidden" id="panel-alert">
+      <div class="placeholder">事件预警：骨架阶段占位，后续接入风险事件监测。</div>
+    </section>
+    <section class="panel hidden" id="panel-scenario">
+      <div class="placeholder">情景推演：骨架阶段占位，后续实现乐观/基准/压力三情景。</div>
+    </section>
+    <section class="panel hidden" id="panel-advice">
+      <div class="placeholder">建议清单：骨架阶段占位，后续输出带证据溯源的建议。</div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>

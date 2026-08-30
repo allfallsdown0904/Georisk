@@ -1,0 +1,16 @@
+country_code,dimension,indicator,value,score,evidence,source
+KZ,politics_conflict,政权更迭风险,中等,45,政局总体稳定，换届程序正常进行,示例占位数据
+KZ,finance_fx,外汇管制风险,较高,65,曾出现本币大幅贬值与外储波动,示例占位数据
+KZ,policy_regulation,外资准入与合规风险,中等,50,外资准入审批存在不确定性,示例占位数据
+KZ,social_order,社会秩序风险,较低,30,偶发集会示威，总体可控,示例占位数据
+KZ,exit_sunk,退出与资金回流风险,中等,55,存在资本流动限制与结汇成本,示例占位数据
+NG,politics_conflict,政权更迭风险,较高,70,政局存在不确定性，安全形势复杂,示例占位数据
+NG,finance_fx,外汇管制风险,较高,75,外汇储备紧张，汇率波动大,示例占位数据
+NG,policy_regulation,外资准入与合规风险,中等,55,行业准入与本地化要求较多,示例占位数据
+NG,social_order,社会秩序风险,较高,70,地区冲突与社会治安问题突出,示例占位数据
+NG,exit_sunk,退出与资金回流风险,较高,72,利润汇出存在审批障碍,示例占位数据
+RS,politics_conflict,政权更迭风险,较低,35,政治格局相对稳定,示例占位数据
+RS,finance_fx,外汇管制风险,较低,32,外汇制度较开放,示例占位数据
+RS,policy_regulation,外资准入与合规风险,中等,48,欧盟规则对接带来合规要求,示例占位数据
+RS,social_order,社会秩序风险,较低,28,社会秩序平稳,示例占位数据
+RS,exit_sunk,退出与资金回流风险,较低,30,资本流动限制较少,示例占位数据
