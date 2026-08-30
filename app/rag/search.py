@@ -29,9 +29,10 @@ class TavilySearchClient:
 
     ENDPOINT = "https://api.tavily.com/search"
 
-    def __init__(self, api_key: str | None = None, timeout: int = 30):
+    def __init__(self, api_key: str | None = None, timeout: int = 30, endpoint: str | None = None):
         self.api_key = api_key or os.getenv("TAVILY_API_KEY", "")
         self.timeout = timeout
+        self.endpoint = endpoint or self.ENDPOINT
         if not self.api_key:
             raise RuntimeError("未配置 TAVILY_API_KEY")
 
@@ -46,7 +47,7 @@ class TavilySearchClient:
             }
         ).encode("utf-8")
         req = urllib.request.Request(
-            self.ENDPOINT,
+            self.endpoint,
             data=payload,
             headers={"Content-Type": "application/json"},
             method="POST",
