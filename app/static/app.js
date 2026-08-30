@@ -109,6 +109,10 @@ async function generateProfile() {
     profileResult.querySelector(".ai-loading")?.remove();
     profileResult.insertAdjacentHTML("beforeend", renderAnalysis(analysisData));
   } catch (err) {
+  } catch (err) {
+    if (err.message.includes("未知国家代码")) {
+      err.message += "（该国家暂无画像评分数据，可切换至「事件预警」页使用智能体分析）";
+    }
     const loading = profileResult.querySelector(".ai-loading");
     if (loading) {
       loading.className = "error analysis-error";
@@ -116,7 +120,7 @@ async function generateProfile() {
     } else {
       profileResult.innerHTML = `<p class="error">${escapeHtml(err.message)}</p>`;
     }
-  }
+  }  }
 }
 
 function closeApiDialog() {
@@ -176,6 +180,7 @@ btnProfile.addEventListener("click", generateProfile);
 checkHealth();
 checkApiStatus();
 loadCountries();
+mergeRagCountries();
 
 // ---------- RAG 智能体分析（事件预警 / 情景推演 / 建议清单） ----------
 const questionInput = document.getElementById("question-input");
@@ -298,3 +303,22 @@ document.querySelectorAll(".tab").forEach((btn) => {
     }
   });
 });
+// ---------- RAG 国家合并（扩展知识库国家进入下拉框） ----------
+const RAG_COUNTRY_NAMES = { KZ: "哈萨克斯坦", NG: "尼日利亚", RS: "塞尔维亚", SA: "沙特阿拉伯", ID: "印度尼西亚" };
+
+async function mergeRagCountries() {
+  try {
+    const ragRes = await fetch("/api/rag/countries");
+    if (!ragRes.ok) return;
+    const rag = await ragRes.json();
+    const existing = new Set(Array.from(countrySelect.options).map((o) => o.value));
+    for (const code of rag.countries || []) {
+      if (!existing.has(code)) {
+        const opt = document.createElement("option");
+        opt.value = code;
+        opt.textContent = `${RAG_COUNTRY_NAMES[code] || code}（${code}）`;
+        countrySelect.appendChild(opt);
+      }
+    }
+  } catch { /* 忽略 RAG 国家合并失败 */ }
+}
