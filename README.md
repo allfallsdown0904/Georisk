@@ -76,9 +76,9 @@ python scripts/build_vector_db.py
 LLM_API_KEY=sk-xxx            # 或 DEEPSEEK_API_KEY
 LLM_MODEL=deepseek-chat
 
-# 联网搜索（不配置则离线模式）
+# 联网搜索（不配置 Key 时自动使用免密钥 Bing News）
 TAVILY_API_KEY=tvly-xxx
-SEARCH_PROVIDER=tavily
+SEARCH_PROVIDER=auto   # auto|tavily|gdelt|bing|none
 
 # 可选：远程嵌入（不配置则使用本地哈希嵌入）
 EMBEDDING_API_KEY=sk-xxx

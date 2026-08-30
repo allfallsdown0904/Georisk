@@ -16,7 +16,7 @@ from app.rag.schemas import (
     Scenario,
     SearchResult,
 )
-from app.rag.search import DummySearchClient, TavilySearchClient, get_search_client
+from app.rag.search import BingNewsSearchClient, DummySearchClient, GDELTSearchClient, TavilySearchClient, get_search_client
 from app.rag.vector_store import RiskVectorStore
 
 __all__ = [
@@ -28,6 +28,8 @@ __all__ = [
     "SearchResult",
     "DummySearchClient",
     "TavilySearchClient",
+    "GDELTSearchClient",
+    "BingNewsSearchClient",
     "get_search_client",
     "Scenario",
     "Recommendation",

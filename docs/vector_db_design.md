@@ -58,8 +58,8 @@
 | `EMBEDDING_API_KEY` | 远程嵌入密钥（可选） | 无（使用本地哈希嵌入） |
 | `EMBEDDING_BASE_URL` | 嵌入服务地址 | `https://api.deepseek.com/v1` |
 | `EMBEDDING_MODEL` | 嵌入模型 | `text-embedding-3-small` |
-| `TAVILY_API_KEY` | 联网搜索密钥（Tavily） | 无（自动离线模式） |
-| `SEARCH_PROVIDER` | `tavily` / `none` | `tavily` |
+| `TAVILY_API_KEY` | 联网搜索密钥（Tavily，推荐） | 无（自动降级免密钥 Bing News / GDELT） |
+| `SEARCH_PROVIDER` | `auto` / `tavily` / `gdelt` / `bing` / `none` | `auto`（有 Tavily Key 用 Tavily，否则免密钥 Bing News） |
 
 ## 5. 运行方式
 
