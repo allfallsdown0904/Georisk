@@ -13,17 +13,22 @@
 - `asset/`：赛事原始素材（指南与企业模板，只读）
 - `PROJECT_NOTES.md` / `AGENTS.md`：项目决策与协作约定
 
-## 安装
+## 配置环境并安装
 
 ```bash
-python -m venv .venv
-.venv\Scripts\activate
+conda create -n georisk python=3.12
+conda activate georisk
 pip install -r requirements.txt
 ```
 
 ## 配置
 
-复制 `.env.example` 为 `.env` 并填入 DeepSeek API Key：
+启动后可点击网页右上角“导入 API”，输入 DeepSeek API Key。系统会将 Key 保存为
+`runtime/api_key.txt`（仅当前系统用户可读写），并立即启用；`runtime/` 已被 Git 忽略，
+提交或打包项目前仍应再次确认其中不含密钥。为避免外部访客覆盖服务端 Key，网页导入接口
+只接受来自 `127.0.0.1` / `::1` 的本机请求；公网部署请改用服务端环境变量或密钥管理服务。
+
+也可以复制 `.env.example` 为 `.env` 并填入 DeepSeek API Key：
 
 ```bash
 DEEPSEEK_API_KEY=sk-xxx
@@ -51,3 +56,5 @@ pytest
 - `GET /api/countries`：国家列表
 - `GET /api/risk/{country_code}`：国别风险画像（如 `KZ`）
 - `POST /api/analyze`：LLM 分析，请求体 `{"country_code": "KZ", "project_type": "EPC工程总承包"}`，需配置 Key
+- `GET /api/config/status`：检查 API 是否已配置（不返回 Key）
+- `POST /api/config/api-key`：保存并立即启用 API Key，请求体 `{"api_key": "sk-xxx"}`

@@ -29,3 +29,14 @@ class AnalyzeResponse(BaseModel):
     project_type: str
     analysis: str
     model: str
+
+
+class ApiKeyRequest(BaseModel):
+    api_key: str = Field(min_length=1, max_length=4096)
+
+
+class ApiConfigStatus(BaseModel):
+    configured: bool
+    source: str | None = None
+    model: str
+    saved_to: str | None = None
