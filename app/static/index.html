@@ -9,7 +9,11 @@
 <body>
   <header class="topbar">
     <h1>海外项目国别风险分析</h1>
-    <span class="status" id="health-status">连接中…</span>
+    <div class="topbar-actions">
+      <span class="status" id="api-status">API 检查中…</span>
+      <span class="status" id="health-status">连接中…</span>
+      <button id="btn-api" class="button-secondary" type="button">导入 API</button>
+    </div>
   </header>
   <nav class="tabs">
     <button class="tab active" data-tab="profile">风险画像</button>
@@ -24,7 +28,7 @@
         <select id="country-select"><option value="">加载中…</option></select>
         <label for="project-type">项目类型</label>
         <input id="project-type" type="text" value="EPC工程总承包" />
-        <button id="btn-profile">生成风险画像</button>
+        <button id="btn-profile">生成 AI 风险分析</button>
       </div>
       <div id="profile-result" class="result"></div>
     </section>
@@ -38,6 +42,25 @@
       <div class="placeholder">建议清单：骨架阶段占位，后续输出带证据溯源的建议。</div>
     </section>
   </main>
+
+  <dialog id="api-dialog" aria-labelledby="api-dialog-title">
+    <form id="api-form" method="dialog">
+      <div class="dialog-header">
+        <div>
+          <h2 id="api-dialog-title">导入 DeepSeek API</h2>
+          <p>Key 将保存到本机 runtime/api_key.txt，不会在页面回显。</p>
+        </div>
+        <button id="btn-api-close" class="icon-button" type="button" aria-label="关闭">×</button>
+      </div>
+      <label for="api-key-input">API Key</label>
+      <input id="api-key-input" type="password" autocomplete="off" placeholder="sk-..." required />
+      <p id="api-message" class="form-message" aria-live="polite"></p>
+      <div class="dialog-actions">
+        <button id="btn-api-cancel" class="button-muted" type="button">取消</button>
+        <button id="btn-api-save" type="submit">保存并启用</button>
+      </div>
+    </form>
+  </dialog>
   <script src="app.js"></script>
 </body>
 </html>

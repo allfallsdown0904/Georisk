@@ -6,9 +6,10 @@ from app import config
 
 def analyze_country(country_code: str, project_type: str, profile_summary: str) -> str:
     """调用默认模型，基于风险画像生成国别风险分析文本。"""
-    if not config.DEEPSEEK_API_KEY:
+    api_key = config.get_api_key()
+    if not api_key:
         raise RuntimeError("未配置 DEEPSEEK_API_KEY，请在 .env 中填写后重试")
-    client = OpenAI(api_key=config.DEEPSEEK_API_KEY, base_url=config.DEEPSEEK_BASE_URL)
+    client = OpenAI(api_key=api_key, base_url=config.DEEPSEEK_BASE_URL)
     response = client.chat.completions.create(
         model=config.DEEPSEEK_MODEL,
         messages=[
