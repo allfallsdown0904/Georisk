@@ -1,3 +1,5 @@
+import os
+
 from fastapi.testclient import TestClient
 
 from app import config
@@ -18,7 +20,9 @@ def test_import_api_key_saves_private_txt_and_uses_it(monkeypatch, tmp_path):
     assert res.json()["configured"] is True
     assert "test-secret-key" not in res.text
     assert key_file.read_text(encoding="utf-8") == "test-secret-key"
-    assert key_file.stat().st_mode & 0o777 == 0o600
+    # Windows 权限由 ACL 管理，chmod 的 Unix 位不生效，仅 POSIX 断言 0600
+    if os.name != "nt":
+        assert key_file.stat().st_mode & 0o777 == 0o600
     assert config.get_api_key() == "test-secret-key"
 
 

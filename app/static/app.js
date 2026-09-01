@@ -109,7 +109,6 @@ async function generateProfile() {
     profileResult.querySelector(".ai-loading")?.remove();
     profileResult.insertAdjacentHTML("beforeend", renderAnalysis(analysisData));
   } catch (err) {
-  } catch (err) {
     if (err.message.includes("未知国家代码")) {
       err.message += "（该国家暂无画像评分数据，可切换至「事件预警」页使用智能体分析）";
     }
@@ -120,7 +119,7 @@ async function generateProfile() {
     } else {
       profileResult.innerHTML = `<p class="error">${escapeHtml(err.message)}</p>`;
     }
-  }  }
+  }
 }
 
 function closeApiDialog() {
